@@ -15,10 +15,21 @@
     <form class="container" action="{{ route('admin.posts.store') }}" method="POST">
         @endif
         @csrf
-        <div class="form-group">
-            <label for="title">Titolo</label>
-            <input type="text" class="form-control" @error('title') is-invalid @enderror id="title" name="title" required minlength="5" maxlength="50" value="{{ old('title', $post->title) }}">
-            <small class="form-text text-muted">Inserisci un titolo</small>
+        <div class="row">
+            <div class="form-group col-8">
+                <label for="title">Titolo</label>
+                <input type="text" class="form-control" @error('title') is-invalid @enderror id="title" name="title" required minlength="5" maxlength="50" value="{{ old('title', $post->title) }}">
+                <small class="form-text text-muted">Inserisci un titolo</small>
+            </div>
+            <div class="form-group col-4">
+                <label for="category">Categoria</label>
+                <select class="form-control" id="category" name="category_id">
+                    <option value="">--</option>
+                    @foreach($categories as $category)
+                    <option @if(old('category_id', $post->category_id)==$category->id) selected @endif value="{{ $category->id }}">{{ $category->label }}</option>
+                    @endforeach
+                </select>
+            </div>
         </div>
         <div class="form-group">
             <label for="image">Immagine</label>
