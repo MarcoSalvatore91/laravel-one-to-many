@@ -45,7 +45,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    Sei sicuro di voler eliminare {{ $category->title }}?
+                                    Sei sicuro di voler eliminare {{ $category->label }}?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
