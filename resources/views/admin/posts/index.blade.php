@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th scope="col">Titolo</th>
-                <th scope="col">Slug</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Creato il:</th>
                 <th scope="col">Contenuto</th>
                 <th scope="col">Azioni</th>
@@ -26,7 +26,11 @@
             @forelse($posts as $post)
             <tr>
                 <th scope="row">{{ $post->title }}</th>
-                <td>{{ $post->slug }}</td>
+                @if($post->category_id)
+                <td class="d-flex justify-content-center badge rounded-pill btn-{{ $post->category->color }} btn-pills">{{ $post->category->label }}</td>
+                @else
+                <td class="text-center">--</td>
+                @endif
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->content }}</td>
                 <td class=" d-flex">
